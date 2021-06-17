@@ -1,8 +1,12 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+
+import java.util.Iterator;
+import java.util.Set;
 
 public class Chapter1Page extends PageObject{
 
@@ -17,6 +21,8 @@ public class Chapter1Page extends PageObject{
     private WebElement dropdownElement;
     @FindBy(css = "#verifybutton")
     private WebElement button;
+    @FindBy(xpath = "/html[1]/body[1]/div[5]")
+    private WebElement popupLink;
 
     public void checkChapter1UniqueText() {
         Assert.assertEquals(this.chapter1PageHeaderText, this.expectedChapter1PageHeaderText);
@@ -33,6 +39,26 @@ public class Chapter1Page extends PageObject{
             System.out.println("Verify button is not displayed");
         }
     }
+
+    public void popupWindowCheck() throws InterruptedException {
+        popupLink.click();
+        Set<String> handler = driver.getWindowHandles();
+        Iterator<String> it = handler.iterator();
+        String parentWindowId = it.next();
+        System.out.println("Parent window id: " + parentWindowId);
+        String childWindowId = it.next();
+        System.out.println("Child window id: " + childWindowId);
+        driver.switchTo().window(childWindowId);
+        WebElement popupWindowText = driver.findElement(By.cssSelector("#popuptext"));
+        if(popupWindowText.isDisplayed()){
+            System.out.println(popupWindowText.getText());
+        } else {
+            System.out.println("Popup window text is not displayed");
+        }
+        driver.findElement(By.cssSelector("#closepopup")).click();
+        driver.switchTo().window(parentWindowId);
+    }
+
     public Chapter1Page(WebDriver driver) {
         super(driver);
     }

@@ -41,9 +41,15 @@ public class TestPlan {
         chapter1Page.buttonCheck();
     }
 
+    @Test(testName = "Chapter 1 pop up window works")
+    public static void checkPopupWindow() throws InterruptedException {
+        driver.get(Utils.CHAPTER1_URL);
+        Chapter1Page chapter1Page = new Chapter1Page(driver);
+        chapter1Page.popupWindowCheck();
+    }
+
     @AfterSuite
     public static void cleanUp(){
-        driver.manage().deleteAllCookies();
         driver.close();
     }
 }
