@@ -55,6 +55,20 @@ public class TestPlan {
         chapter1Page.ajaxCheck();
     }
 
+    @Test(testName = "Chapter 2 element with dynamic ID can be find after refresh")
+    public static void findDynamicElement() throws InterruptedException {
+        driver.get(Utils.CHAPTER2_URL);
+        Chapter2Page chapter2Page = new Chapter2Page(driver);
+        chapter2Page.findElementWithDynamicallyChangedID();
+    }
+
+    @Test(testName = "Chapter 2 button can be find using its name")
+    public static void findElementByName() throws InterruptedException {
+        driver.get(Utils.CHAPTER2_URL);
+        Chapter2Page chapter2Page = new Chapter2Page(driver);
+        chapter2Page.findAnElementUsingItsName();
+    }
+
     @AfterSuite
     public static void cleanUp(){
         driver.close();
