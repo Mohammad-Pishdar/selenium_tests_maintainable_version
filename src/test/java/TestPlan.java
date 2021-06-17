@@ -14,10 +14,17 @@ public class TestPlan {
     }
 
     @Test(testName = "Home page is accessible")
-    public static void submitForm(){
+    public static void checkHomepage(){
         driver.get(Utils.BASE_URL);
         HomepageAccessible homePage = new HomepageAccessible(driver);
         homePage.checkHomepageHeader();
+    }
+
+    @Test(testName = "Chapter 1 unique text is present")
+    public static void checkChapter1Text(){
+        driver.get(Utils.CHAPTER1_URL);
+        Chapter1Page chapter1Page = new Chapter1Page(driver);
+        chapter1Page.checkChapter1UniqueText();
     }
 
     @AfterSuite

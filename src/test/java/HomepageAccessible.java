@@ -3,7 +3,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
-public class HomepageAccessible extends HomePage{
+public class HomepageAccessible extends PageObject{
 
     private final String expectedHeaderText = "Selenium: Beginners Guide";
 
