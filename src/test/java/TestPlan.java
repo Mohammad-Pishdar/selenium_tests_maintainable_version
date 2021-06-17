@@ -27,6 +27,13 @@ public class TestPlan {
         chapter1Page.checkChapter1UniqueText();
     }
 
+    @Test(testName = "Chapter 1 dropdown menu works")
+    public static void checkDropdown(){
+        driver.get(Utils.CHAPTER1_URL);
+        Chapter1Page chapter1Page = new Chapter1Page(driver);
+        chapter1Page.dropdownCheck();
+    }
+
     @AfterSuite
     public static void cleanUp(){
         driver.manage().deleteAllCookies();
