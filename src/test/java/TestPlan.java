@@ -90,6 +90,13 @@ public class TestPlan {
         chapter4Page.inputFieldValueAlerted();
     }
 
+    @Test(testName = "Chapter 8 cookies tested")
+    public static void checkCookies() throws InterruptedException {
+        driver.get(Utils.CHAPTER8_URL);
+        Chapter8Page chapter8Page = new Chapter8Page(driver);
+        chapter8Page.testCookies();
+    }
+
     @AfterSuite
     public static void cleanUp(){
         driver.close();
