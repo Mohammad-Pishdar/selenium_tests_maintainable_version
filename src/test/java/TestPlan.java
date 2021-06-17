@@ -48,6 +48,13 @@ public class TestPlan {
         chapter1Page.popupWindowCheck();
     }
 
+    @Test(testName = "Chapter 1 ajax call works")
+    public static void checkAjax() throws InterruptedException {
+        driver.get(Utils.CHAPTER1_URL);
+        Chapter1Page chapter1Page = new Chapter1Page(driver);
+        chapter1Page.ajaxCheck();
+    }
+
     @AfterSuite
     public static void cleanUp(){
         driver.close();

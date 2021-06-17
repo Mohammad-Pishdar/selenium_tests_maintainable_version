@@ -2,11 +2,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.time.Duration;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 
 public class Chapter1Page extends PageObject{
 
@@ -23,6 +29,8 @@ public class Chapter1Page extends PageObject{
     private WebElement button;
     @FindBy(xpath = "/html[1]/body[1]/div[5]")
     private WebElement popupLink;
+    @FindBy(css = "#loadajax")
+    private WebElement ajaxLink;
 
     public void checkChapter1UniqueText() {
         Assert.assertEquals(this.chapter1PageHeaderText, this.expectedChapter1PageHeaderText);
@@ -58,6 +66,19 @@ public class Chapter1Page extends PageObject{
         driver.findElement(By.cssSelector("#closepopup")).click();
         driver.switchTo().window(parentWindowId);
     }
+
+    public void ajaxCheck() {
+        ajaxLink.click();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        WebElement ajaxText = driver.findElement(By.xpath("/html[1]/body[1]/div[9]/p[1]"));
+        if (ajaxText.isDisplayed()){
+            System.out.println("Ajax text is displayed which reads: " + ajaxText.getText());
+        } else {
+            System.out.println("Ajax text is not displayed!");
+        }
+    }
+
+
 
     public Chapter1Page(WebDriver driver) {
         super(driver);
