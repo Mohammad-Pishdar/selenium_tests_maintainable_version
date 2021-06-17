@@ -76,6 +76,13 @@ public class TestPlan {
         chapter2Page.findElementUsingItsPrecedingSibling();
     }
 
+    @Test(testName = "Chapter 4 mouse over element checked")
+    public static void checkMouseoverElement() throws InterruptedException {
+        driver.get(Utils.CHAPTER4_URL);
+        Chapter4Page chapter4Page = new Chapter4Page(driver);
+        chapter4Page.mouseoverCheck();
+    }
+
     @AfterSuite
     public static void cleanUp(){
         driver.close();
