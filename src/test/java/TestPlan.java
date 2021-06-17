@@ -83,6 +83,13 @@ public class TestPlan {
         chapter4Page.mouseoverCheck();
     }
 
+    @Test(testName = "Chapter 4 input field value will be alerted using the related button")
+    public static void checkInputFieldAlertButton() throws InterruptedException {
+        driver.get(Utils.CHAPTER4_URL);
+        Chapter4Page chapter4Page = new Chapter4Page(driver);
+        chapter4Page.inputFieldValueAlerted();
+    }
+
     @AfterSuite
     public static void cleanUp(){
         driver.close();
