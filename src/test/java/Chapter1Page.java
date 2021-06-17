@@ -15,6 +15,8 @@ public class Chapter1Page extends PageObject{
     private final String chapter1PageHeaderText  = chapter1PageHeader.getText();
     @FindBy(css = "#selecttype")
     private WebElement dropdownElement;
+    @FindBy(css = "#verifybutton")
+    private WebElement button;
 
     public void checkChapter1UniqueText() {
         Assert.assertEquals(this.chapter1PageHeaderText, this.expectedChapter1PageHeaderText);
@@ -23,6 +25,13 @@ public class Chapter1Page extends PageObject{
         Select dropdown = new Select(dropdownElement);
         dropdown.selectByVisibleText(exampleDropdownItemText1);
         dropdown.selectByVisibleText(exampleDropdownItemText2);
+    }
+    public void buttonCheck() {
+        if(button.isDisplayed()){
+            System.out.println("Verify button is there");
+        } else {
+            System.out.println("Verify button is not displayed");
+        }
     }
     public Chapter1Page(WebDriver driver) {
         super(driver);

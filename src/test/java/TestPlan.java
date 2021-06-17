@@ -34,6 +34,13 @@ public class TestPlan {
         chapter1Page.dropdownCheck();
     }
 
+    @Test(testName = "Chapter 1 specific button is in there")
+    public static void checkButton(){
+        driver.get(Utils.CHAPTER1_URL);
+        Chapter1Page chapter1Page = new Chapter1Page(driver);
+        chapter1Page.buttonCheck();
+    }
+
     @AfterSuite
     public static void cleanUp(){
         driver.manage().deleteAllCookies();
