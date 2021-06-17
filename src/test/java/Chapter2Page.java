@@ -24,6 +24,11 @@ public class Chapter2Page extends PageObject{
         System.out.println("Button with a name attribute was found on Chapter2 page");
     }
 
+    public void findElementUsingItsPrecedingSibling() {
+        WebElement sibling = driver.findElement(By.xpath("//input[@id=\"but1\"]/following-sibling::input"));
+        System.out.println("The value attribute of sibling button reads: " + sibling.getAttribute("value"));
+    }
+
     public Chapter2Page(WebDriver driver) {
         super(driver);
     }

@@ -69,6 +69,13 @@ public class TestPlan {
         chapter2Page.findAnElementUsingItsName();
     }
 
+    @Test(testName = "Chapter 2 sibling button can be find using the xpath of its preceding sibling")
+    public static void findFollowingSibling() throws InterruptedException {
+        driver.get(Utils.CHAPTER2_URL);
+        Chapter2Page chapter2Page = new Chapter2Page(driver);
+        chapter2Page.findElementUsingItsPrecedingSibling();
+    }
+
     @AfterSuite
     public static void cleanUp(){
         driver.close();
